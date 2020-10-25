@@ -15,8 +15,33 @@
 <canvas id="thecanvas" style="position: fixed; z-index: 0;"></canvas>
 
 <div id="menu">
+  <div class="option">
+    <a href="#" onclick="selector(1); return false;">Consulta<br> a coleção</a>
+  </div>
+  <div class="option">
+    <a href="#" onclick="selector(2); return false;">Leitura<br> Jam</a>
+  </div>
+  <div class="option">
+    <a href="#" onclick="selector(3); return false;">Cria um<br> cordel</a>
+  </div>
+</div>
 
-
+<div id="content1" class="content" style="visibility: hidden;">
+  <div class="cordel">
+    <select id="catalogue" onchange="show();"></select>
+  </div>
+  <div class="pages">p.
+    <input id="page" type="number" value=1 step=1 min=1 oninput="show();" onchange="show();" onkeydown="return false;"/>
+  </div>
+  <br>
+  <img src="img/mark_left.png" style="display: inline;"> Titulo <img src="img/mark_right.png">
+  <div id="titulo" class="consultas"></div>
+  <img src="img/mark_left.png" style="display: inline;"> Autor <img src="img/mark_right.png">
+  <div id="autor" class="consultas"></div>
+  <img src="img/mark_left.png" style="display: inline;"> Data <img src="img/mark_right.png">
+  <div id="data" class="consultas"></div>
+  <img src="img/mark_left.png" style="display: inline;"> Localidade <img src="img/mark_right.png">
+  <div id="localidade" class="consultas"></div>
 </div>
 
 
