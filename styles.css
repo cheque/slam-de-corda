@@ -1,0 +1,63 @@
+#menu {
+    /* background-color: #FFFFFFAA; */
+    background-image: url('img/fundo_menu.png');
+    /* opacity: 50%; */
+    position: fixed;
+    top: 50px;
+    right: 50px;
+    padding: 25px;
+    width: 300px;
+    height: 500px;
+    /* transform: translate(-50%, 0%); */
+    text-align: center;
+    font-family: fantasy;
+    font-size: 24pt;
+    /* font-weight: ; */
+}
+
+.option a{
+    text-decoration: none;
+    color: #000;
+    margin: 0;
+}
+
+.option{
+    height: 33%;
+    width: 100%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.content {
+    background-image: url('img/fundo_menu.png');
+    /* opacity: 50%; */
+    position: fixed;
+    bottom: 200px;
+    right: 50px;
+    padding: 25px;
+    width: 300px;
+    height: 500px;
+    transform: translate(0, 0);
+    text-align: center;
+    /* font-family: fantasy; */
+    font-size: 16pt;
+    overflow-y: auto;
+}
+
+#catalogue {
+    width: 200px;
+}
+
+#page {
+    width: 50px;
+}
+.cordel {
+    padding-top: 25px;
+}
+
+.consultas {
+    padding: 15px;
+    width: 270px;
+    font-weight: bold;
+}
