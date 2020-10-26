@@ -30,7 +30,7 @@
   <div class="cordel">
     <select id="catalogue" onchange="show_select(imgORtext);"></select>
   </div>
-  <div class="pages">p.
+  <div id="pages" class="pages">p.
     <input id="page" type="number" value=1 step=1 min=1 oninput="show_select(imgORtext);" onchange="show_select(imgORtext);" onkeydown="return false;"/>
   </div>
   <br>
@@ -45,7 +45,17 @@
 </div>
 
 <div id="content2" class="bigbox" style="visibility: hidden;">
-  HOLA
+  <div id="text_container">
+    <p style="font-size: 28pt;">SELECIONA UM CORDEL PARA LER O CONTEÚDO!</p>
+  </div>
+</div>
+
+<div id="audio">
+  <audio controls>
+    <source src="beat.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+  Acordeón Pirata Instrumental<br>Hip Hop Trap Rap (Free Use)
 </div>
 
 

@@ -75,12 +75,13 @@ function selector(a){
   switch (a) {
     case 1:
       document.getElementById("content1").style.visibility = 'visible';
+      document.getElementById("pages").style.visibility = 'visible';
       imgORtext = 1;
       break;
     case 2:
-      console.log("Selected 2");
       document.getElementById("content1").style.visibility = 'visible';
       document.getElementById("content2").style.visibility = 'visible';
+      document.getElementById("pages").style.visibility = 'hidden';
       imgORtext = 2;
       img.src = 'img/blank.png';
       break;
@@ -137,7 +138,10 @@ function show_text(){
   document.getElementById("localidade").innerHTML = Cordeis[id].Localidade;
   document.getElementById("page").max = Cordeis[id].Folhas;
 
-
+  document.getElementById("text_container").innerHTML = "";
+  var textoHTML = Cordeis[id].Texto;
+  textoHTML = textoHTML.replace(/(\r\n|\n|\r)/gm,"<br>")
+  document.getElementById("text_container").innerHTML = textoHTML;
 
   // var p = document.getElementById("page").value;
   // img.src = 'cordeis/'+ Cordeis[id].Codigo + '-' + p + '.jpg';
