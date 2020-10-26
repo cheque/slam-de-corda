@@ -72,6 +72,7 @@ window.onresize = function(){
 function selector(a){
   document.getElementById("menu").style.visibility = 'hidden';
   document.getElementById("content1").style.visibility = 'hidden';
+  document.getElementById("audio").style.visibility = 'hidden';
   switch (a) {
     case 1:
       document.getElementById("content1").style.visibility = 'visible';
@@ -81,7 +82,9 @@ function selector(a){
     case 2:
       document.getElementById("content1").style.visibility = 'visible';
       document.getElementById("content2").style.visibility = 'visible';
+      document.getElementById("audio").style.visibility = 'visible';
       document.getElementById("pages").style.visibility = 'hidden';
+      document.getElementById("beat").play();
       imgORtext = 2;
       img.src = 'img/blank.png';
       break;
