@@ -9,6 +9,7 @@
 <script src="data_explore.js"></script>
 <link rel="stylesheet" type="text/css" href="styles.css">
 <script src="cordeis.json"></script>
+<!-- <script src="cordeis_cut.json"></script> -->
 
 <body>
 
@@ -26,8 +27,8 @@
     <a href="#" onclick="selector(2); return false;">Leitura<br> Jam</a>
   </div>
   <div class="option">
-    <a href="criar.html">Criar um<br> cordel</a>
-    <!-- <a href="#" onclick="selector(3); return false;">Criar um<br> cordel</a> -->
+    <!-- <a href="criar.html">Criar um<br> cordel</a> -->
+    <a href="#" onclick="selector(3); return false;">Criar um<br> cordel</a>
   </div>
 </div>
 
@@ -65,6 +66,24 @@
   <div>
 </div>
 
+<div id="busca" style="visibility: visible;">
+    <form>
+        <textarea id="search-term" name="areatexto" placeholder="Busca nos cordéis"
+        rows="1" cols="30" style="font-size: 16pt; flex: 1;"></textarea>
+        <a href="#" onclick="selector(2); return false;">
+          <img src="img/search.png" width=32px>
+        </a>
+        <br>
+    </form>
+</div>
+
+<div id="escrever" style="visibility: hidden;">
+    <form>
+        <textarea id="areatexto" name="areatexto" placeholder="Escreve teu próprio cordel"
+        rows="30" cols="80"></textarea>
+          <!--<input type="submit" value="Submit">-->
+        </form>
+</div>
 
 </body>
 

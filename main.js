@@ -75,15 +75,22 @@ function selector(a){
   document.getElementById("content2").style.visibility = 'hidden';
   document.getElementById("audio").style.visibility = 'hidden';
   document.getElementById("pages").style.visibility = 'hidden';
+  document.getElementById("busca").style.visibility = 'hidden';
+  document.getElementById("home-link").style.visibility = 'hidden';
+  document.getElementById("escrever").style.visibility = 'hidden';
   switch (a) {
     case 0:
       document.getElementById("menu").style.visibility = 'visible';
+      document.getElementById("busca").style.visibility = 'visible';
       imgORtext = 0;
       img.src = 'img/blank.png';
+      document.getElementById("beat").pause();
       break;
     case 1:
       document.getElementById("content1").style.visibility = 'visible';
       document.getElementById("pages").style.visibility = 'visible';
+      document.getElementById("home-link").style.visibility = 'visible';
+      document.getElementById("beat").pause();
       imgORtext = 1;
       break;
     case 2:
@@ -91,12 +98,17 @@ function selector(a){
       document.getElementById("content2").style.visibility = 'visible';
       document.getElementById("audio").style.visibility = 'visible';
       document.getElementById("pages").style.visibility = 'hidden';
+      document.getElementById("home-link").style.visibility = 'visible';
       document.getElementById("beat").play();
       imgORtext = 2;
       img.src = 'img/blank.png';
       break;
     case 3:
       // document.getElementById("content1").style.visibility = 'visible';
+      document.getElementById("audio").style.visibility = 'visible';
+      document.getElementById("home-link").style.visibility = 'visible';
+      document.getElementById("escrever").style.visibility = 'visible';
+      document.getElementById("beat").play();
       img.src = 'img/blank.png';
       break;
     default:
