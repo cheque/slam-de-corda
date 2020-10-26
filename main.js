@@ -21,6 +21,7 @@ img.src = 'img/blank.png';
 
 var up = 0;
 var down = 1;
+var imgORtext = 0;
 
 var cordeis = document.getElementById('catalogue');
 
@@ -47,7 +48,8 @@ function draw(content) {
   }
 
   ctx.save();
-  if (Math.random() < 0.03 && up > -0.15){
+  if (Math.random() < 0.03 && up >    case 0:
+ -0.15){
     up = up - 0.01;
   } else if (Math.random() < 0.03 && up < 0.15) {
     up = up + 0.01;
@@ -68,14 +70,39 @@ window.onresize = function(){
   h = canvas.height;
 }
 
-function selector(value){
+function selector(a){
   document.getElementById("menu").style.visibility = 'hidden';
-  switch (value) {
-    case 1:
+  document.getElementById("content1").style.visibility = 'hidden';
+  switch (a) {
+    case "1":
       document.getElementById("content1").style.visibility = 'visible';
+      imgORtext = 1;
+      break;
+    case "2":
+      console.log("Selected 2");
+      document.getElementById("content1").style.visibility = 'visible';
+      document.getElementById("content2").style.visibility = 'visible';
+      imgORtext = 2;
+      img.src = 'img/blank.png';
+      break;
+    case "3":
+      // document.getElementById("content1").style.visibility = 'visible';
+      img.src = 'img/blank.png';
       break;
     default:
-      document.getElementById("menu").style.visibility = 'visible';
+      // document.getElementById("menu").style.visibility = 'visible';
+      img.src = 'img/blank.png';
+  }
+}
+
+function show_select(a){
+  switch (a) {
+    case 1:
+      show();
+      break;
+    case 2:
+      show_text();
+      break;
   }
 }
 
@@ -96,7 +123,26 @@ function show(){
 
   img.src = 'cordeis/'+ Cordeis[id].Codigo + '-' + p + '.jpg';
   init(true);
+}
 
+function show_text(){
+  var id = document.getElementById("catalogue").value;
+  var pages = Cordeis[id].Folhas;
+  document.getElementById("titulo").innerHTML = "";
+  document.getElementById("titulo").innerHTML = Cordeis[id].Titulo;
+  document.getElementById("autor").innerHTML = "";
+  document.getElementById("autor").innerHTML = Cordeis[id].Autor;
+  document.getElementById("data").innerHTML = "";
+  document.getElementById("data").innerHTML = Cordeis[id].Data;
+  document.getElementById("localidade").innerHTML = "";
+  document.getElementById("localidade").innerHTML = Cordeis[id].Localidade;
+  document.getElementById("page").max = Cordeis[id].Folhas;
+
+
+
+  // var p = document.getElementById("page").value;
+  // img.src = 'cordeis/'+ Cordeis[id].Codigo + '-' + p + '.jpg';
+  init(true);
 }
 
 

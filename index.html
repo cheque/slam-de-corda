@@ -28,10 +28,10 @@
 
 <div id="content1" class="content" style="visibility: hidden;">
   <div class="cordel">
-    <select id="catalogue" onchange="show();"></select>
+    <select id="catalogue" onchange="show_select(imgORtext);"></select>
   </div>
   <div class="pages">p.
-    <input id="page" type="number" value=1 step=1 min=1 oninput="show();" onchange="show();" onkeydown="return false;"/>
+    <input id="page" type="number" value=1 step=1 min=1 oninput="show_select(imgORtext);" onchange="show_select(imgORtext);" onkeydown="return false;"/>
   </div>
   <br>
   <img src="img/mark_left.png" style="display: inline;"> Titulo <img src="img/mark_right.png">
@@ -42,6 +42,10 @@
   <div id="data" class="consultas"></div>
   <img src="img/mark_left.png" style="display: inline;"> Localidade <img src="img/mark_right.png">
   <div id="localidade" class="consultas"></div>
+</div>
+
+<div id="content2" class="bigbox" style="visibility: hidden;">
+  HOLA
 </div>
 
 
