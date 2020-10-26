@@ -72,8 +72,15 @@ window.onresize = function(){
 function selector(a){
   document.getElementById("menu").style.visibility = 'hidden';
   document.getElementById("content1").style.visibility = 'hidden';
+  document.getElementById("content2").style.visibility = 'hidden';
   document.getElementById("audio").style.visibility = 'hidden';
+  document.getElementById("pages").style.visibility = 'hidden';
   switch (a) {
+    case 0:
+      document.getElementById("menu").style.visibility = 'visible';
+      imgORtext = 0;
+      img.src = 'img/blank.png';
+      break;
     case 1:
       document.getElementById("content1").style.visibility = 'visible';
       document.getElementById("pages").style.visibility = 'visible';

@@ -15,6 +15,13 @@
     /* font-weight: ; */
 }
 
+#home-link{
+    position: fixed;
+    top: 30px;
+    right: 30px;
+    text-align: right;
+}
+
 .option a{
     text-decoration: none;
     color: #000;
