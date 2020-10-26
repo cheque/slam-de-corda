@@ -134,3 +134,14 @@ textarea {
     overflow: auto;
 
 }
+
+.btn {
+  height: 50px;
+  width: 50px;
+  border-color: #000;
+  background-color: #fff;
+  border-radius: 50%;
+  display: inline-block;
+  text-align: center;
+}
+
