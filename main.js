@@ -48,8 +48,7 @@ function draw(content) {
   }
 
   ctx.save();
-  if (Math.random() < 0.03 && up >    case 0:
- -0.15){
+  if (Math.random() < 0.03 && up > -0.15){
     up = up - 0.01;
   } else if (Math.random() < 0.03 && up < 0.15) {
     up = up + 0.01;
@@ -74,18 +73,18 @@ function selector(a){
   document.getElementById("menu").style.visibility = 'hidden';
   document.getElementById("content1").style.visibility = 'hidden';
   switch (a) {
-    case "1":
+    case 1:
       document.getElementById("content1").style.visibility = 'visible';
       imgORtext = 1;
       break;
-    case "2":
+    case 2:
       console.log("Selected 2");
       document.getElementById("content1").style.visibility = 'visible';
       document.getElementById("content2").style.visibility = 'visible';
       imgORtext = 2;
       img.src = 'img/blank.png';
       break;
-    case "3":
+    case 3:
       // document.getElementById("content1").style.visibility = 'visible';
       img.src = 'img/blank.png';
       break;
