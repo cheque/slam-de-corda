@@ -2,10 +2,9 @@
 <meta charset="utf-8">
 <head>
   <title>Slam de Corda</title>
-
 </head>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script> -->
 <!-- <script src="data_explore.js"></script> -->
 <link rel="stylesheet" type="text/css" href="styles.css">
 <script src="cordeis.json"></script>
@@ -16,6 +15,51 @@
   <img src="img/slam_de_corda_logo.png" style="width:100%;"/>
 </div>
 
+<div id="info">
+  <a href="#" onclick="document.getElementById('about').style.visibility = 'visible';">
+    <img src="img/info_round.png" style="width:100%; float:right;"/>
+  </a>
+</div>
+
+<!-- ABOUT -->
+<div id="about" class="main" style="visibility: hidden; font-size: 20px;">
+  <div id="home-link">
+    <a href="#" onclick="document.getElementById('about').style.visibility = 'hidden';">
+      <img src="img/home.png" width=30px;/>
+    </a>
+  </div>
+  <img src="img/slam_de_corda_logo.png" height=250px >
+  <br/>
+  <br/>
+  <div style="display: inline-block; width: 30%;">
+    Uma produção de: <br/>
+    <img src="img/logo_sesamo1cores_fundo_branco.png" height=100px>
+  </div>
+  <div style="display: inline-block; width: 30%;">
+    Uma coleção de cordéis do: <br/>
+    <a href="http://www.ieb.usp.br/" target="_blank">
+      <img src="img/IEBsite122.png" height=100px>
+    </a>
+  </div>
+  <div style="display: inline-block; width: 30%;">
+    Para o hackaton:<br/>
+    <a href="https://www.goethe.de/prj/hyc/pt/bra.html" target="_blank">
+      <img src="img/abrete_codigo.png" height=100px>
+    </a>
+  </div>
+  <br/>
+  <br/>
+  <br/>
+  Github
+  <br/>
+  <br/>
+  Pitch
+  <br/>
+  <br/>
+  Equipe?
+</div>
+
+<!-- CONSULTA AO CATÁLOGO -->
 <div id="consulta" class="main" style="visibility: hidden;">
   <div id="home-link">
     <a href="#" onclick="selector(0);"><img src="img/home.png" width=30px;/></a>
@@ -27,7 +71,7 @@
 
   <div id="content1" class="content">
     <div class="cordel">
-      <select id="catalogue" onchange="selectDisplay();"></select>
+      <select id="catalogue" onchange="mainID=this.value; selectDisplay();"></select>
     </div><br>
     <div id="pages" class="pages">
     <input type="checkbox" id="image" name="image"
@@ -44,12 +88,18 @@
     <div id="localidade" class="consultas"></div>
     <h3>Data</h3>
     <div id="data" class="consultas"></div>
-
   </div>
 
+  <div id="linkInspira">
+    <a href="#" onclick="selector(2); inspira(mainID);">
+      <img src="img/slam_xilo.png" width="120px" style="float: right; padding-left: 20px;">
+      Inspirou-se? <br/> Bora fazer <br/> rimas?
+    </a>
+  </div>
 
 </div>
 
+<!-- CRIAÇÃO DE SLAMS -->
 <div id="cria" class="main" style="visibility: hidden;">
   <div id="home-link">
     <a href="#" onclick="selector(0);"><img src="img/home.png" width=30px;/></a>
@@ -106,32 +156,38 @@
     </div>
   </div>
 
+  <div class="consultaCat">
+    <div class="left">
+      <a href="#" onclick="inspira(Math.floor(Math.random() * Cordeis.length));">
+        <img src="img/refresh_round.png" height=50px style="float: left;"/>
+      </a>
+    </div>
+    <div id="criaInfoCordel">
+    </div>
+    <div class="right">
+      <a href="#" onclick="selector(1); selectDisplay();">
+        <img src="img/docs_round.png" height=50px style="float: right;"/>
+      </a>
+    </div>
+  </div>
 </div>
 
-
-<div id="buscaMenu">
-</div>
-
+<!-- BARRA DE BUSCA E RESULTADOS -->
 <div id="busca" style="visibility: visible;">
     <form>
         <textarea id="search-term" name="areatexto" placeholder="Busca inspiração nos cordéis"
         onchange="buscaCordel(this.value)" oninput="buscaCordel(this.value)"
         rows="1" cols="30" style="font-size: 20pt; flex: 1;"></textarea>
         <!-- <a href="#" onclick="selector(2); return false;"> -->
-          <img src="img/search.png" width=32px>
         <!-- </a> -->
-        <br>
+        <!-- <br> -->
     </form>
+    <img src="img/search.png" width=40px style="float: right; padding-left:20px;">
 </div>
 
-<div id="menu" style="visibility: hidden;">
-  <div class="option">
-    <a href="#" onclick="selector(1); selectDisplay(); return false;">Consulta<br> a coleção</a>
-  </div>
-  <div class="option">
-    <a href="#" onclick="selector(2); return false;">Cria um<br> cordel</a>
-  </div>
+<div id="buscaMenu">
 </div>
+
 
 <div class="consultaLink">
   <a href="#" onclick="selector(1); selectDisplay();">
@@ -140,9 +196,15 @@
   </a>
 </div>
 
-
-
-
+<!-- ANTIGO MENU DE OPÇÕES -->
+<!-- <div id="menu" style="visibility: hidden;">
+  <div class="option">
+    <a href="#" onclick="selector(1); selectDisplay(); return false;">Consulta<br> a coleção</a>
+  </div>
+  <div class="option">
+    <a href="#" onclick="selector(2); return false;">Cria um<br> cordel</a>
+  </div>
+</div> -->
 
 </body>
 

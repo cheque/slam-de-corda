@@ -15,6 +15,20 @@ body {
     /* height: 500px; */
 }
 
+#info {
+    position: absolute;
+    top: 50px;
+    right: 50px;
+    width: 40px;
+}
+
+#about {
+    text-align: center;
+}
+#about a {
+    color: #44F;
+}
+
 a {
     text-decoration: none;
 }
@@ -41,11 +55,12 @@ a {
     align-items: center; /* align vertical */
     background-color: #000;
     color: #FFF;
+    border-radius: 25px;
     text-align: right;
     position: absolute;
     bottom: 100px;
     right: 50px;
-    width: 550px;
+    width: 600px;
     height: 50px;
     /* transform: translate(50%, 100%); */
     z-index: 0;
@@ -174,6 +189,61 @@ a {
     color: #FFF;
     text-decoration: bold;
     transform: translate(0, 50%);
+    font-family: fantasy;
+}
+
+.left {
+    grid-row-start: 1;
+    grid-column-start: 1;
+    grid-column-end: 1;
+    padding: 10px;
+    width: 50px;slam_de_corda_logo
+    align-self: start;
+}
+.right {
+    grid-row-start: 1;
+    grid-column-start: 3;
+    grid-column-end: 3;
+    padding: 10px;
+    width: 50px;
+    align-self: start;
+    justify-self: end;
+}
+#criaInfoCordel {
+    grid-row-start: 1;
+    grid-column-start: 2;
+    grid-column-end: 2;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-size: 12pt;
+    text-align: right;
+    /* justify-self: center; */
+    /* align-self: baseline; */
+}
+
+.consultaCat {
+    display: grid;
+    position: relative;
+    bottom: 30px;
+    left:30px;
+    width: 50%;
+    /* transform: translate(0, 50%); */
+}
+.consultaCat a{
+    color: #000;
+    text-decoration: bold;
+    /* transform: translate(0, 50%); */
+}
+
+#linkInspira {
+    position: absolute;
+    display: flex;
+    bottom: 30px;
+    right: 30px;
+    font-size: 20pt;
+}
+#linkInspira a {
+    color: #000;
 }
 
 /* -------------------------------------------------------------------------- */

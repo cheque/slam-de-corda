@@ -21,17 +21,17 @@ function selector(a){
 }
 
 function selectDisplay(){
+  document.getElementById('catalogue').value = mainID;
+  show(mainID);
   if(document.getElementById("image").checked){
     document.getElementById("page").value = 1;
     showPage(1);
-  } else {
-    show(document.getElementById('catalogue').value);
-  };
+  }
 }
 
 function show(key){
   // var id = document.getElementById("catalogue").value;
-  var id = key || Math.floor(Math.random() * Cordeis.length);
+  var id = key || mainID;
   var pages = Cordeis[id].Folhas;
   document.getElementById("titulo").innerHTML = Cordeis[id].Titulo;
   document.getElementById("autor").innerHTML = Cordeis[id].Autor;
@@ -99,7 +99,7 @@ window.onload = function() {
 
 function findCordel(sometext){
   var result = [];
-  var amount = 50;
+  var amount = 60;
   var key = 0;
   var text = "";
   var len = sometext.length;
@@ -110,26 +110,31 @@ function findCordel(sometext){
       if (start >= amount/2){
         text = "... " + Cordeis[i].Titulo.substring(start - amount/2,start) + "<b>" +
           Cordeis[i].Titulo.substr(start,len) + "</b>" +
-          Cordeis[i].Titulo.substr(start+len,start + amount/2-len);
+          Cordeis[i].Titulo.substr(start+len, amount/2) + "...";
       } else {
         text = Cordeis[i].Titulo.substr(0,start) + "<b>" +
           Cordeis[i].Titulo.substr(start,len) + "</b>" +
-          Cordeis[i].Titulo.substr(start+len,amount/2 + start-len) + "... ";
+          Cordeis[i].Titulo.substr(start+len,amount-start+len) + "... ";
       }
       result.push({key,text});
     } else if (Cordeis[i]["Palavras-chave"].search(sometext) > 0) {
       var start = Cordeis[i]["Palavras-chave"].search(sometext);
       key = i;
       text = "<b>" + Cordeis[i]["Palavras-chave"].substr(start,len) + "</b>" +
-        Cordeis[i]["Palavras-chave"].substr(start+len,amount-len);
+        Cordeis[i]["Palavras-chave"].substr(start+len,amount-len) + "...";
       result.push({key,text});
     } else if (Cordeis[i].Texto.search(sometext) > 0) {
       var start = Cordeis[i].Texto.search(sometext);
-
       key = i;
-      text = "... <b>" +
+      if (start >= amount/2){
+        text = "..."+  Cordeis[i].Texto.substring(start - amount/2,start) + "<b>" +
           Cordeis[i].Texto.substr(start,len) + "</b>" +
-          Cordeis[i].Texto.substr(start+len,amount-len) + "...";
+          Cordeis[i].Texto.substr(start+len, amount/2) + "...";
+      } else {
+        text = Cordeis[i].Texto.substr(0,start) + "<b>" +
+          Cordeis[i].Texto.substr(start,len) + "</b>" +
+          Cordeis[i].Texto.substr(start+len,amount-start+len) + "...";
+      }
       result.push({key,text});
     }
   }
@@ -142,22 +147,32 @@ function buscaCordel(texto){
   var len = texto.length;
   if (len >= 3) {
     show = findCordel(texto);
+    if (show.length > 0){
+      for (var i=0; i<show.length; i++){
+        var node = document.createElement('div');
+        node.innerHTML = "<a href='#' onclick='inspira("+ show[i].key +");'>"
+        + show[i].text +"</a>";
+        document.getElementById("buscaMenu").appendChild(node);
+      }
+    } else {
+      var node = document.createElement('div');
+      node.innerHTML = "Ups!!! Essa busca não produz resultados, tenta de novo ;)";
+      document.getElementById("buscaMenu").appendChild(node);
+    }
   } else if (len > 0) {
     var node = document.createElement('div');
     node.innerHTML = "Digite pelo menos 3 caracteres...<br/>+ Clique 2 vezes no resultado!";
-    document.getElementById("buscaMenu").appendChild(node);
-  }
-  for (var i=0; i<show.length; i++){
-    var node = document.createElement('div');
-    node.innerHTML = "<a href='#' onclick='inspira("+ show[i].key +");'>"
-              + show[i].text +"</a>";
     document.getElementById("buscaMenu").appendChild(node);
   }
 }
 
 function inspira(num) {
   selector(2);
+  mainID = num;
   var textoHTML = Cordeis[num].Texto;
   textoHTML = textoHTML.replace(/(\r\n|\n|\r)/gm,"<br>")
   document.getElementById("content2").innerHTML = textoHTML;
+  document.getElementById("criaInfoCordel").innerHTML =
+    Cordeis[num].Titulo + "<br/><br/><b> " +
+    Cordeis[num].Autor + "</b>";
 }
