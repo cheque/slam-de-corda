@@ -1,5 +1,7 @@
 var cordeis = document.getElementById('catalogue');
 
+var mainID = Math.floor(Math.random() * Cordeis.length);
+
 function selector(a){
   document.getElementById("consulta").style.visibility = 'hidden';
   document.getElementById("cria").style.visibility = 'hidden';
@@ -13,7 +15,7 @@ function selector(a){
       break;
     case 2:
       document.getElementById("cria").style.visibility = 'visible';
-      document.getElementById("beat").play();
+      // document.getElementById("beat").play();
       break;
   }
 }
@@ -91,17 +93,71 @@ window.onload = function() {
       option.value = i;
       cordeis.add(option);
   }
+  document.getElementById("catalogue").value = Math.floor(Math.random() * Cordeis.length);
 };
 
 
 function findCordel(sometext){
   var result = [];
+  var amount = 50;
+  var key = 0;
+  var text = "";
+  var len = sometext.length;
   for (var i = 0; i < Cordeis.length; i++){
-    if ( Cordeis[i].Titulo.search(sometext) > 0 ||
-      Cordeis[i].Texto.search(sometext) > 0 ||
-      Cordeis[i]["Palavras-chave"].search(sometext) > 0 ){
-      result.push(i);
+    if ( Cordeis[i].Titulo.search(sometext) > 0 ){
+      var start = Cordeis[i].Titulo.search(sometext);
+      key = i;
+      if (start >= amount/2){
+        text = "... " + Cordeis[i].Titulo.substring(start - amount/2,start) + "<b>" +
+          Cordeis[i].Titulo.substr(start,len) + "</b>" +
+          Cordeis[i].Titulo.substr(start+len,start + amount/2-len);
+      } else {
+        text = Cordeis[i].Titulo.substr(0,start) + "<b>" +
+          Cordeis[i].Titulo.substr(start,len) + "</b>" +
+          Cordeis[i].Titulo.substr(start+len,amount/2 + start-len) + "... ";
+      }
+      result.push({key,text});
+    } else if (Cordeis[i]["Palavras-chave"].search(sometext) > 0) {
+      var start = Cordeis[i]["Palavras-chave"].search(sometext);
+      key = i;
+      text = "<b>" + Cordeis[i]["Palavras-chave"].substr(start,len) + "</b>" +
+        Cordeis[i]["Palavras-chave"].substr(start+len,amount-len);
+      result.push({key,text});
+    } else if (Cordeis[i].Texto.search(sometext) > 0) {
+      var start = Cordeis[i].Texto.search(sometext);
+
+      key = i;
+      text = "... <b>" +
+          Cordeis[i].Texto.substr(start,len) + "</b>" +
+          Cordeis[i].Texto.substr(start+len,amount-len) + "...";
+      result.push({key,text});
     }
   }
   return result;
+}
+
+function buscaCordel(texto){
+  document.getElementById("buscaMenu").innerHTML="";
+  var show = [];
+  var len = texto.length;
+  if (len >= 3) {
+    show = findCordel(texto);
+  } else if (len > 0) {
+    var node = document.createElement('div');
+    node.innerHTML = "Digite pelo menos 3 caracteres...<br/>+ Clique 2 vezes no resultado!";
+    document.getElementById("buscaMenu").appendChild(node);
+  }
+  for (var i=0; i<show.length; i++){
+    var node = document.createElement('div');
+    node.innerHTML = "<a href='#' onclick='inspira("+ show[i].key +");'>"
+              + show[i].text +"</a>";
+    document.getElementById("buscaMenu").appendChild(node);
+  }
+}
+
+function inspira(num) {
+  selector(2);
+  var textoHTML = Cordeis[num].Texto;
+  textoHTML = textoHTML.replace(/(\r\n|\n|\r)/gm,"<br>")
+  document.getElementById("content2").innerHTML = textoHTML;
 }

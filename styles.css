@@ -4,6 +4,7 @@ body {
     background-repeat: no-repeat;
     background-size: 100% auto;
     height: 100%;
+    margin: 0;
 }
 
 #logo {
@@ -14,8 +15,12 @@ body {
     /* height: 500px; */
 }
 
+a {
+    text-decoration: none;
+}
+
 .main {
-    background-image: url('img/fundo_cordel.png');
+    background-image: url('img/fundo_cordel_med.png');
     /* background-repeat: repeat-x; */
     background-size: cover;
     position: fixed;
@@ -38,14 +43,33 @@ body {
     color: #FFF;
     text-align: right;
     position: absolute;
-    bottom: 5%;
-    right: 50%;
+    bottom: 100px;
+    right: 50px;
     width: 550px;
     height: 50px;
-    transform: translate(50%, 0);
+    /* transform: translate(50%, 100%); */
     z-index: 0;
 }
 
+#buscaMenu {
+    background-color: #000;
+    color: #FFF;
+    position: absolute;
+    bottom: 150px;
+    right: 50px;
+    width: 750px;
+    /* transform: translate(50%, 0); */
+    z-index: 0;
+    font-size: 14pt;
+}
+
+#buscaMenu a{
+    color: #FFF;
+}
+
+#buscaMenu b{
+    color: #FF6;
+}
 
 #menu {
     background-image: url('img/fundo_menu.png');
@@ -72,7 +96,7 @@ body {
 }
 
 #text_container {
-    background-color: #FFF;
+    background-color: #FFF7;
     position: relative;
     /* padding-left: 5%; */
     top: 0;
@@ -109,47 +133,96 @@ body {
 }
 
 .bigbox {
-    background-image: url('img/fundo_cordel_small.png');
-    /* opacity: 50%; */
-    position: fixed;
-    bottom: 150px;
-    left: 150px;
-    padding: 25px;
-    width: 600px;
-    height: 450px;
-    transform: translate(0, 0);
+    display: inline-block;
+    float: right;
+    width: 40%;
+    height: 80%;
     text-align: center;
-    /* font-family: fantasy; */
-    font-size: 16pt;
-    overflow-y: auto;
 }
 
 #escrever {
     position: relative;
+    display: inline-block;
     top: 0;
+    width: 50%;
     left: 30px;
     font-size: 16pt;
     overflow-y: auto;
 }
 
-#catalogue {
-    width: 100%;
+.subcontent {
+    position: absolute;
+    display: inline-block;
+    overflow-wrap: normal;
+    bottom: 30px;
+    right: 30px;
+    width: 40%;
+    max-height: 60%;
     font-size: 16pt;
+    overflow-y: auto;
+}
+
+.consultaLink {
+    background-color: #000;
+    border-radius: 25px;
+    position: absolute;
+    bottom:100px;
+    left:50px;
+    /* transform: translate(0, 50%); */
+}
+.consultaLink a{
+    color: #FFF;
+    text-decoration: bold;
+    transform: translate(0, 50%);
+}
+
+/* -------------------------------------------------------------------------- */
+/* Audio controls grid */
+/* -------------------------------------------------------------------------- */
+
+.grava {
+    background-color: #444;
+    grid-row-start: 1;
+    grid-column-start: 1;
+    grid-column-end: 3;
+    place-self: center stretch;
+}
+.recbut {
+    grid-row-start: 2;
+    grid-column-start: 1;
+    grid-column-end: 1;
+    padding: 10px;
+    place-self: center;
+}
+.track {
+    grid-row-start: 2;
+    grid-column-start: 2;
+    grid-column-end: 2;
+    padding: 10px;
+    place-self: center;
+}
+.buttons2 {
+    grid-column-start: 1;
+    grid-column-end: 3;
+    grid-row-start: 3;
+    place-self: center;
+    height: 25px;
 }
 
 #audio {
-    display: flex;
+    display: grid;
     background-color: #000;
     color: #FFF;
-    text-align: right;
+    text-align: center;
     position: absolute;
-    bottom: 75px;
-    right: 50%;
-    width: 550px;
-    height: 50px;
-    transform: translate(50%, 0);
+    top: 30px;
+    right: 30px;
+    /* width: 30%; */
 }
 
+/* -------------------------------------------------------------------------- */
+/* Database query controls */
+/* -------------------------------------------------------------------------- */
 
 #page {
     width: 50px;
@@ -161,10 +234,17 @@ body {
     padding-top: 25px;
 }
 
+#catalogue {
+    width: 100%;
+    font-size: 16pt;
+}
+
+
+
+
 textarea {
     resize: none;
     overflow: auto;
-
 }
 
 .btn {
@@ -175,4 +255,13 @@ textarea {
   border-radius: 50%;
   display: inline-block;
   text-align: center;
+}
+
+.buttons {
+    /* float: right; */
+    text-align: left;
+    position: relative;
+    bottom: 0;
+    left: 0;
+    transform: translate(0, -27.5px);
 }

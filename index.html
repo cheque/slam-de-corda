@@ -16,15 +16,13 @@
   <img src="img/slam_de_corda_logo.png" style="width:100%;"/>
 </div>
 
-<div id="consulta" class="main">
+<div id="consulta" class="main" style="visibility: hidden;">
   <div id="home-link">
     <a href="#" onclick="selector(0);"><img src="img/home.png" width=30px;/></a>
   </div>
 
   <div id="text_container">
-    <p style="font-size: 28pt;">SELECIONA UM CORDEL PARA LER O CONTEÚDO!</p>
-  </div>
-  <div id="img_container" style="visibility: hidden;">
+    <!-- <p style="font-size: 28pt;">SELECIONA UM CORDEL PARA LER O CONTEÚDO!</p> -->
   </div>
 
   <div id="content1" class="content">
@@ -45,30 +43,80 @@
     <h3>Localidade</h3>
     <div id="localidade" class="consultas"></div>
     <h3>Data</h3>
-    <div id="data" clasSim, podemoss="consultas"></div>
+    <div id="data" class="consultas"></div>
 
   </div>
 
 
 </div>
 
-<div id="cria" class="main" style="visibility: visible;">
+<div id="cria" class="main" style="visibility: hidden;">
   <div id="home-link">
     <a href="#" onclick="selector(0);"><img src="img/home.png" width=30px;/></a>
   </div>
   <div id="escrever">
-      <form>
-          <textarea id="areatexto" name="areatexto" placeholder="Escreve teu próprio cordel"
-          rows="25" cols="50" style="font-size: 16pt;"></textarea>
-            <!--<input type="submit" value="Submit">-->
-          </form>
+    <form>
+      <textarea id="areatexto" name="areatexto" placeholder="Escreve tua própria rima"
+      rows="25" cols="50" style="font-size: 16pt;"></textarea>
+        <!--<input type="submit" value="Submit">-->
+    </form>
+    <div class="buttons">
+      <a href="#" onclik="download_text();">
+        <img src="img/download_round.png" height=50px />
+      </a>
+      <a href="#" onclik="share_text();">
+        <img src="img/share_round.png" height=50px />
+      </a>
+      <a href="#" onclik="clear_text();">
+        <img src="img/trash_round.png" height=50px />
+      </a>
+    </div>
   </div>
+
+  <div id="content2" class="subcontent">
+  </div>
+
+  <div id="audio">
+    <div class="grava">
+      Grave sua rima
+    </div>
+    <div class="recbut">
+      <a href="#" onclik="record();">
+        <img src="img/rec.png" height=80px />
+      </a>
+    </div>
+    <div class="track">
+      Acordeón Pirata Instrumental<br>Hip Hop Trap Rap (Free Use)
+      <br>
+      <audio controls id="beat">
+        <source src="beat.mp3" type="audio/mpeg">
+          Your browser does not support the audio element.
+        </audio>
+    </div>
+    <div class="buttons2">
+      <a href="#" onclik="download_audio();">
+        <img src="img/download_round.png" height=50px alt="Baixa"/>
+      </a> &nbsp;&nbsp;
+      <a href="#" onclik="share_audio();">
+        <img src="img/share_round.png" height=50px />
+      </a> &nbsp;&nbsp;
+      <a href="#" onclik="clear_audio();">
+        <img src="img/trash_round.png" height=50px />
+      </a>
+    </div>
+  </div>
+
+</div>
+
+
+<div id="buscaMenu">
 </div>
 
 <div id="busca" style="visibility: visible;">
     <form>
-        <textarea id="search-term" name="areatexto" placeholder="Busca nos cordéis"
-        rows="1" cols="30" style="font-size: 16pt; flex: 1;"></textarea>
+        <textarea id="search-term" name="areatexto" placeholder="Busca inspiração nos cordéis"
+        onchange="buscaCordel(this.value)" oninput="buscaCordel(this.value)"
+        rows="1" cols="30" style="font-size: 20pt; flex: 1;"></textarea>
         <!-- <a href="#" onclick="selector(2); return false;"> -->
           <img src="img/search.png" width=32px>
         <!-- </a> -->
@@ -76,27 +124,23 @@
     </form>
 </div>
 
-<div id="menu">
+<div id="menu" style="visibility: hidden;">
   <div class="option">
-    <a href="#" onclick="selector(1); show(); return false;">Consulta<br> a coleção</a>
+    <a href="#" onclick="selector(1); selectDisplay(); return false;">Consulta<br> a coleção</a>
   </div>
   <div class="option">
-    <!-- <a href="criar.html">Criar um<br> cordel</a> -->
     <a href="#" onclick="selector(2); return false;">Cria um<br> cordel</a>
   </div>
 </div>
 
-
-
-<div id="audio" style="visibility: hidden;">
-  <audio controls id="beat">
-    <source src="beat.mp3" type="audio/mpeg">
-    Your browser does not support the audio element.
-  </audio>
-  <div style="flex: 1;">
-    Acordeón Pirata Instrumental<br>Hip Hop Trap Rap (Free Use)
-  <div>
+<div class="consultaLink">
+  <a href="#" onclick="selector(1); selectDisplay();">
+    <img src="img/docs_round.png" height=50px style="float: left;"/>
+    <div style="display: flex; padding-left: 20px;">Consulta o catálogo</div>
+  </a>
 </div>
+
+
 
 
 
