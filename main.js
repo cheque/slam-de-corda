@@ -176,3 +176,35 @@ function inspira(num) {
     Cordeis[num].Titulo + "<br/><br/><b> " +
     Cordeis[num].Autor + "</b>";
 }
+
+function clearText(){
+  document.getElementById('areatexto').value = "";
+  updateTextFile();
+}
+
+var fileNameToSaveAs = 'rima-download.txt';
+var theLink = document.getElementById("downloadText");
+
+function updateTextFile() {
+  var text = document.getElementById('areatexto').value;
+  var theBlob = new Blob([text], {type: 'text/plain'});
+  localStorageToFile(theLink,theBlob);
+  return false;
+}
+
+function localStorageToFile(downloadLink,blob) {
+    downloadLink.download = fileNameToSaveAs;
+    if (window.URL !== null) {
+        // Chrome allows the link to be clicked without actually adding it to the DOM
+        downloadLink.href = window.URL.createObjectURL(blob);
+        downloadLink.target = `_blank`;
+    } else {
+        downloadLink.href = window.URL.createObjectURL(blob);
+        downloadLink.target = `_blank`;
+        downloadLink.style.display = 'none';
+        // add .download so works in Firefox desktop.
+        document.body.appendChild(downloadLink.download);
+    }
+    // downloadLink.click();
+    return false;
+}

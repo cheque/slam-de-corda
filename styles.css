@@ -256,6 +256,9 @@ a {
     grid-column-start: 1;
     grid-column-end: 3;
     place-self: center stretch;
+    font-family: fantasy;
+    font-size: 16pt;
+    padding: 5px;
 }
 .recbut {
     grid-row-start: 2;

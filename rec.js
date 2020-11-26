@@ -58,6 +58,11 @@ function startRecording() {
       //start the recording process
       rec.record()
       console.log("Recording started");
+      // Including base-track media sync
+      if (document.getElementById("syncAudio").checked) {
+          document.getElementById("beat").currentTime = 0;
+          document.getElementById("beat").play();
+      }
   }).catch(function(err) {
       //enable the record button if getUserMedia() fails
       recordButton.disabled = false;
@@ -71,10 +76,18 @@ function pauseRecording() {
     if (rec.recording) {
         //pause
         rec.stop();
+        // Including base-track media sync
+        if (document.getElementById("syncAudio").checked) {
+            document.getElementById("beat").pause();
+        }
         pauseButton.innerHTML = "<img src='img/resume.png' height=40px/>";
     } else {
         //resume
         rec.record()
+        // Including base-track media sync
+        if (document.getElementById("syncAudio").checked) {
+            document.getElementById("beat").play();
+        }
         pauseButton.innerHTML = "<img src='img/pause.png' height=40px/>";
     }
 }
@@ -89,6 +102,11 @@ function stopRecording() {
     pauseButton.innerHTML = "<img src='img/pause.png' height=40px/>";
     //tell the recorder to stop the recording
     rec.stop(); //stop microphone access
+    // Including base-track media sync
+    if (document.getElementById("syncAudio").checked) {
+        document.getElementById("beat").pause();
+        document.getElementById("beat").currentTime = 0;
+    }
     gumStream.getAudioTracks()[0].stop();
     //create the wav blob and pass it on to createDownloadLink
     rec.exportWAV(createDownloadLink);

@@ -106,20 +106,22 @@
   </div>
   <div id="escrever">
     <form>
-      <textarea id="areatexto" name="areatexto" placeholder="Escreve tua própria rima"
+      <textarea id="areatexto" placeholder="Escreve tua própria rima"
+			onchange = "updateTextFile();" oninput = "updateTextFile();"
       rows="25" cols="50" style="font-size: 16pt;"></textarea>
         <!--<input type="submit" value="Submit">-->
     </form>
     <div class="buttons">
-      <a href="#" onclik="download_text();">
+      <a id="downloadText" onclik="downloadTextFile();">
         <img src="img/download_round.png" height=50px />
       </a>
-      <a href="#" onclik="share_text();">
+      <!-- <a href="#" onclik="share_text();">
         <img src="img/share_round.png" height=50px />
-      </a>
-      <a href="#" onclik="clear_text();">
+      </a> -->
+      <a href="javascript:clearText();">
         <img src="img/trash_round.png" height=50px />
       </a>
+			<!-- <button type="button" value="save" id="save">Save</button> -->
     </div>
   </div>
 
@@ -128,8 +130,9 @@
 
   <div id="audio">
     <div class="grava">
-      Grave sua rima<br/>
-			Firefox - <s>Chrome</s> - Safari?
+      Grave sua rima!
+			<!-- <br/>
+			Firefox - <s>Chrome</s> - Safari? -->
     </div>
     <div class="recbut">
       <!-- <a href="#" onclik="toggleRecording(this);"> -->
@@ -156,6 +159,10 @@
       </a>
     </div> -->
 		<div id="recControls">
+			<div style="display: inline-block; padding: 10px; font-family: fantasy;">
+				<input type="checkbox" id="syncAudio" name="image" onchange="" style="size:20px;"/>
+				<br/>Sync
+			</div>
 			<button id="recordButton"><img src="img/mic.png" height=40px/></button>
     	<button id="pauseButton" disabled><img src="img/pause.png" height=40px/></button>
     	<button id="stopButton" disabled><img src="img/stop.png" height=40px/></button>
