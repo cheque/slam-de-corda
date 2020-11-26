@@ -66,7 +66,6 @@
   </div>
 
   <div id="text_container">
-    <!-- <p style="font-size: 28pt;">SELECIONA UM CORDEL PARA LER O CONTEÚDO!</p> -->
   </div>
 
   <div id="content1" class="content">
@@ -74,11 +73,12 @@
       <select id="catalogue" onchange="mainID=this.value; selectDisplay();"></select>
     </div><br>
     <div id="pages" class="pages">
-    <input type="checkbox" id="image" name="image"
-      onchange="selectDisplay();"/>
-      Ver cordel original &nbsp;&nbsp;
-    p.  <input id="page" type="number" value=1 step=1 min=1 oninput="showPage(this.value);" onchange="showPage(this.value);" onkeydown="return false;"/>
-      / <div id="totpag" style="display: inline;"></div>
+    <input type="checkbox" id="image" name="image" onchange="selectDisplay();" style="transform: scale(1.2);"/>
+      Ver o cordel &nbsp;&nbsp;
+		<!-- <input id="page" type="number" value=1 step=1 min=1 oninput="showPage(this.value);" onchange="showPage(this.value);" onkeydown="return false;"
+			style="visibility: hidden;"/> -->
+      <!-- / -->
+		(<div id="totpag" style="display: inline;"></div> páginas)
     </div>
     <h3>Título</h3>
     <div id="titulo" class="consultas"></div>
@@ -109,7 +109,6 @@
       <textarea id="areatexto" placeholder="Escreve tua própria rima"
 			onchange = "updateTextFile();" oninput = "updateTextFile();"
       rows="25" cols="50" style="font-size: 16pt;"></textarea>
-        <!--<input type="submit" value="Submit">-->
     </form>
     <div class="buttons">
       <a id="downloadText" onclik="downloadTextFile();">
@@ -121,7 +120,6 @@
       <a href="javascript:clearText();">
         <img src="img/trash_round.png" height=50px />
       </a>
-			<!-- <button type="button" value="save" id="save">Save</button> -->
     </div>
   </div>
 
@@ -131,13 +129,9 @@
   <div id="audio">
     <div class="grava">
       Grave sua rima!
-			<!-- <br/>
-			Firefox - <s>Chrome</s> - Safari? -->
     </div>
     <div class="recbut">
-      <!-- <a href="#" onclik="toggleRecording(this);"> -->
-        <img src="img/slam_xilo.png" height=80px />
-      <!-- </a> -->
+      <img src="img/slam_xilo.png" height=80px />
     </div>
     <div class="track">
       Acordeón Pirata Instrumental<br>Hip Hop Trap Rap (Free Use)
@@ -147,20 +141,9 @@
           Your browser does not support the audio element.
         </audio>
     </div>
-    <!-- <div class="buttons2">
-      <a href="#" id="save">
-        <img src="img/download_round.png" height=50px alt="Baixa"/>
-      </a> &nbsp;&nbsp;
-      <a href="#" onclik="share_audio();">
-        <img src="img/share_round.png" height=50px />
-      </a> &nbsp;&nbsp;
-      <a href="#" onclik="clear_audio();">
-        <img src="img/trash_round.png" height=50px />
-      </a>
-    </div> -->
 		<div id="recControls">
 			<div style="display: inline-block; padding: 10px; font-family: fantasy;">
-				<input type="checkbox" id="syncAudio" name="image" onchange="" style="size:20px;"/>
+				<input type="checkbox" id="syncAudio" name="image" onchange="" style="transform: scale(1.2);"/>
 				<br/>Sync
 			</div>
 			<button id="recordButton"><img src="img/mic.png" height=40px/></button>
@@ -210,15 +193,6 @@
   </a>
 </div>
 
-<!-- ANTIGO MENU DE OPÇÕES -->
-<!-- <div id="menu" style="visibility: hidden;">
-  <div class="option">
-    <a href="#" onclick="selector(1); selectDisplay(); return false;">Consulta<br> a coleção</a>
-  </div>
-  <div class="option">
-    <a href="#" onclick="selector(2); return false;">Cria um<br> cordel</a>
-  </div>
-</div> -->
 
 </body>
 

@@ -24,8 +24,8 @@ function selectDisplay(){
   document.getElementById('catalogue').value = mainID;
   show(mainID);
   if(document.getElementById("image").checked){
-    document.getElementById("page").value = 1;
-    showPage(1);
+    // document.getElementById("page").value = 1;
+    showPage();
   }
 }
 
@@ -37,11 +37,11 @@ function show(key){
   document.getElementById("autor").innerHTML = Cordeis[id].Autor;
   document.getElementById("data").innerHTML = Cordeis[id].Data;
   document.getElementById("localidade").innerHTML = Cordeis[id].Localidade;
-  document.getElementById("page").max = Cordeis[id].Folhas;
+  // document.getElementById("page").max = Cordeis[id].Folhas;
   document.getElementById("totpag").innerHTML = Cordeis[id].Folhas;
 
-  var p = 1;
-  document.getElementById("page").value = 1;
+  // var p = 1;
+  // document.getElementById("page").value = 1;
 
   document.getElementById("text_container").innerHTML = "";
   document.getElementById("text_container").style.padding = "0 0 0 5%";
@@ -51,39 +51,46 @@ function show(key){
 
 }
 
-function showPage(p){
+function showPage(){
   var id = document.getElementById("catalogue").value;
   document.getElementById("titulo").innerHTML = Cordeis[id].Titulo;
   document.getElementById("autor").innerHTML = Cordeis[id].Autor;
   document.getElementById("data").innerHTML = Cordeis[id].Data;
   document.getElementById("localidade").innerHTML = Cordeis[id].Localidade;
-  document.getElementById("page").max = Cordeis[id].Folhas;
+  // document.getElementById("page").max = Cordeis[id].Folhas;
   document.getElementById("totpag").innerHTML = Cordeis[id].Folhas;
   document.getElementById("text_container").style.padding = "0";
   if (document.getElementById("image").checked){
-    p = p || 1;
-    var id = document.getElementById("catalogue").value;
+    var p = 1;
+    document.getElementById("text_container").innerHTML = "";
+
     var img = new Image();
     img.onload = function() {
       // image exists and is loaded
       // document.body.appendChild(img);
-      document.getElementById("text_container").innerHTML =
-      '<img src=\'cordeis_small/'+ Cordeis[id].Codigo + '-' + p + '.JPEG\' width=100% />';
+      for (var k=1; k<=Cordeis[id].Folhas; k++){
+        document.getElementById("text_container").innerHTML +=
+        '<img src=\'cordeis_small/'+ Cordeis[id].Codigo + '-' + k + '.JPEG\' width=100% />';
+      }
     }
     img.onerror = function() {
       // image did not load
       // var err = new Image();
       // err.src = 'cordeis_small/'+ Cordeis[id].Codigo + '-0' + p + '.JPEG';
       // document.body.appendChild(err);
-      document.getElementById("text_container").innerHTML =
-      '<img src=\'cordeis_small/'+ Cordeis[id].Codigo + '-0' + p + '.JPEG\' width=100% />';
+      for (var k=1; k<=Cordeis[id].Folhas; k++){
+        if (k<10){
+          document.getElementById("text_container").innerHTML +=
+          '<img src=\'cordeis_small/'+ Cordeis[id].Codigo + '-0' + k + '.JPEG\' width=100% />';
+        } else {
+          document.getElementById("text_container").innerHTML +=
+          '<img src=\'cordeis_small/'+ Cordeis[id].Codigo + '-' + k + '.JPEG\' width=100% />';
+        }
+      }
     }
-
     img.src = 'cordeis_small/'+ Cordeis[id].Codigo + '-' + p + '.JPEG';
   }
-
 }
-
 
 window.onload = function() {
   var option;
