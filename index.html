@@ -131,9 +131,9 @@
       Grave sua rima
     </div>
     <div class="recbut">
-      <a href="#" onclik="record();">
-        <img src="img/rec.png" height=80px />
-      </a>
+      <!-- <a href="#" onclik="toggleRecording(this);"> -->
+        <img src="img/slam_xilo.png" height=80px />
+      <!-- </a> -->
     </div>
     <div class="track">
       Acordeón Pirata Instrumental<br>Hip Hop Trap Rap (Free Use)
@@ -143,8 +143,8 @@
           Your browser does not support the audio element.
         </audio>
     </div>
-    <div class="buttons2">
-      <a href="#" onclik="download_audio();">
+    <!-- <div class="buttons2">
+      <a href="#" id="save">
         <img src="img/download_round.png" height=50px alt="Baixa"/>
       </a> &nbsp;&nbsp;
       <a href="#" onclik="share_audio();">
@@ -153,7 +153,13 @@
       <a href="#" onclik="clear_audio();">
         <img src="img/trash_round.png" height=50px />
       </a>
-    </div>
+    </div> -->
+		<div id="recControls">
+			<button id="recordButton"><img src="img/mic.png" height=40px/></button>
+    	<button id="pauseButton" disabled><img src="img/pause.png" height=40px/></button>
+    	<button id="stopButton" disabled><img src="img/stop.png" height=40px/></button>
+		</div>
+		<div id="recordingsList"></div>
   </div>
 
   <div class="consultaCat">
@@ -209,5 +215,7 @@
 </body>
 
 <script src="main.js"></script>
+<script src="https://cdn.rawgit.com/mattdiamond/Recorderjs/08e7abd9/dist/recorder.js"></script>
+<script src="rec.js"></script>
 
 </html>
